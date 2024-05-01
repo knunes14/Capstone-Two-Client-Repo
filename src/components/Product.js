@@ -1,8 +1,8 @@
-import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
-import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
-import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
+import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 
 const Info = styled.div`
     opacity: 0;
@@ -69,20 +69,20 @@ const Icon = styled.div`
 const Product = ({item}) => {
   return (
     <Container>
-        <Circle/>
+        {/* <Circle/> */}
         <Image src={item.img}/>
         <Info>
-            <Icon>
+            {/* <Icon>
                 <ShoppingCartOutlinedIcon/>
-            </Icon>
+            </Icon> */}
             <Icon>
                 <Link to={`/product/${item._id}`}>
                 <SearchOutlinedIcon/>
                 </Link>
             </Icon>
-            <Icon>
+            {/* <Icon>
                 <FavoriteBorderOutlinedIcon/>
-            </Icon>
+            </Icon> */}
         </Info>
     </Container>
   );

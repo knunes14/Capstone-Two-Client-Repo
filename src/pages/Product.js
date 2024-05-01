@@ -48,6 +48,20 @@ const Title = styled.h1`
 
 const Description = styled.p`
     margin: 20px 0px;
+    line-height: 1.5;
+    font-size: 16px;
+`;
+
+const Material = styled.p`
+    margin: 20px 0px;
+    line-height: 1.5;
+    font-size: 16px;
+`;
+
+const Style = styled.p`
+    margin: 20px 0px;
+    line-height: 1.5;
+    font-size: 16px;
 `;
 
 const Price = styled.span`
@@ -173,7 +187,9 @@ const Product = () => {
             </ImgContainer>
             <InfoContainer>
                 <Title>{product.title}</Title>
-                <Description>{product.desc}</Description>
+                <Description>{product.description}</Description>
+                <Material>Material: {product.material}</Material>
+                <Style>Style: {product.style}</Style>
                 <Price>$ {product.price}</Price>
                 <FilterContainer>
                     <Filter>
