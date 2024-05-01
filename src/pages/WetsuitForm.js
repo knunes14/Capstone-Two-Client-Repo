@@ -56,11 +56,11 @@ function WetsuitForm({ onSubmit }) {
             </label>
             <label>
                 Height (inches)
-                <input type="number" name="height" value={formData.height} onChange={handleChange} />
+                <input type="number" name="height" placeholder="ex. 70" value={formData.height} onChange={handleChange} />
             </label>
             <label>
                 Weight (pounds):
-                <input type="number" name="weight" value={formData.weight} onChange={handleChange} />
+                <input type="number" name="weight" placeholder="ex. 180" value={formData.weight} onChange={handleChange} />
             </label>
             <label>
                 Style:

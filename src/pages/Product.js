@@ -42,6 +42,7 @@ const InfoContainer = styled.div`
 `;
 
 const Title = styled.h1`
+    font-size: 50px;
     font-weight: 200;
 `;
 
@@ -51,7 +52,7 @@ const Description = styled.p`
 
 const Price = styled.span`
     font-weight: 100;
-    font-size: 40px;
+    font-size: 30px;
 `;
 
 const FilterContainer = styled.div`
@@ -83,8 +84,8 @@ const FilterSize = styled.select`
     text-overflow: ellipsis;  // Adds an ellipsis if the content is too long
 
     &:focus {
-        outline: none;  // Removes the default focus outline
-        border-color: teal;  // Adds a border color when focused
+        outline: none;  
+        border-color: teal;  
     }
 `;
 
@@ -106,7 +107,7 @@ const Amount = styled.span`
     width: 30px;
     height: 30px;
     border-radius: 10px;
-    border: 1px solid teal;
+    border: 2px solid teal;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -124,6 +125,10 @@ const Button = styled.button`
         background-color: #f8f4f4;
     }
 `;
+
+// const Link = styled.a`
+//     text-decoration: none;
+// `;
 
 
 const Product = () => {
@@ -197,6 +202,7 @@ const Product = () => {
                     </AmountContainer>
                     <Button onClick={handleClick}>ADD TO CART</Button>
                 </AddContainer>
+                {/* <Link to="/sizeform" style={{ textDecoration: 'none', fontWeight: 'bold', color: 'black' }}>CLICK HERE TO TRY OUR NEW WETSUIT RECOMMENDATION TOOL! #LOVEMATUSE</Link> */}
             </InfoContainer>
         </Wrapper>
         <Newsletter/>  

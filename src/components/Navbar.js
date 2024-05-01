@@ -86,6 +86,9 @@ const Navbar = () => {
 
   console.log("Current User:", currentUser); // Log the current user's information
 
+  console.log("Cart quantity in Navbar:", quantity);
+
+
   const handleLogout = () => {
     logout(dispatch);
     navigate('/');

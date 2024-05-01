@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import RemoveOutlinedIcon from '@mui/icons-material/RemoveOutlined';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
@@ -6,8 +6,9 @@ import Announcement from '../components/Announcement';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { mobile } from '../responsive';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { updateCart } from '../redux/cartRedux';
 // import StripeCheckout from 'react-stripe-checkout';
 // import { useEffect, useState } from 'react';
 // import { userRequest } from '../requestMethods';
@@ -165,7 +166,25 @@ const Button = styled.button`
 `;
 
 const Cart = () => {
-    const cart = useSelector((state) => state.cart);
+const cart = useSelector((state) => state.cart);
+    const dispatch = useDispatch();
+
+    console.log("Cart state in Cart component:", cart);
+
+    // Load cart from local storage when component mounts
+    useEffect(() => {
+        const savedCart = localStorage.getItem('cart');
+        console.log("Loaded cart from localStorage:", savedCart);
+        if (savedCart) {
+            dispatch(updateCart(JSON.parse(savedCart)));
+        }
+    }, [dispatch]);
+
+    // Save cart to local storage whenever it changes
+    useEffect(() => {
+        localStorage.setItem('cart', JSON.stringify(cart));
+    }, [cart]);
+
     // const [stripeToken, setStripeToken] = useState(null);
     // const history = useHistory();
 
@@ -187,6 +206,9 @@ const Cart = () => {
     //     stripeToken && cart.total >=1 &&makeRequest();
     // }, [stripeToken, cart.total, history]);
 
+    // {cart.products.map(product => {
+    //     console.log(product);
+
   return (
     <Container>
       <Navbar/>
@@ -200,7 +222,6 @@ const Cart = () => {
             <TopTexts>
                 <TopText>Shopping Bag ( {cart.quantity } )</TopText>
             </TopTexts>
-            <TopButton type="filled">CHECKOUT NOW</TopButton>
         </Top>
         <Bottom>
             <Info>
@@ -210,9 +231,9 @@ const Cart = () => {
                         <Image src= { product.img }/>
                         <Details>
                             <ProductName><b>Product: </b>{ product.title }</ProductName>
-                            {/* <ProductId><b>ID:</b> { product._id }</ProductId> */}
                             <ProductColor color="black"/>
-                            <ProductSize><b>Size: </b>{ product.selectedSize }</ProductSize>
+                            {/* <ProductSize><b>Size: </b>{ product.selectedSize }</ProductSize> */}
+                            <ProductSize><b>Size: </b>{ product.size }</ProductSize>
                         </Details>
                     </ProductDetail>
                     <PriceDetail>
@@ -241,7 +262,6 @@ const Cart = () => {
                     <SummaryItemText>Total</SummaryItemText>
                     <SummaryItemPrice>$ { cart.total + 5.90 }</SummaryItemPrice>
                 </SummaryItem>
-                // THIS WILL BE UPDATED W/ STRIPE 
                 <Button>CHECKOUT NOW</Button>
             </Summary>
         </Bottom>
@@ -249,6 +269,7 @@ const Cart = () => {
       <Footer/>
     </Container>
   );
+    // })}
 };
 
 export default Cart;
