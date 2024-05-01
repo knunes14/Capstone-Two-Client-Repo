@@ -7,7 +7,7 @@ import Cart from './pages/Cart';
 import Success from './pages/Success';
 import { useSelector } from 'react-redux';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import WetsuitSizeForm from './pages/WetsuitSizeForm.js';
+import WetsuitForm from './pages/WetsuitForm.js';
 import WetsuitResultPage from './pages/WetsuitResultPage.js';
 
 const App = () => {
@@ -29,7 +29,7 @@ const App = () => {
         <Route path="/success" element={<Success />} />
         <Route path="/login" element={user ? <Navigate to="/" /> :<Login />} />
         <Route path="/register" element={user ? <Navigate to="/" /> :<Register />} />
-        <Route path="/sizeform" element={<WetsuitSizeForm />} />
+        <Route path="/sizeform" element={<WetsuitForm />} />
         <Route path="/results" element={<WetsuitResultPage />} />
       </Routes>
     </Router>

@@ -10,6 +10,7 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 
 const Container = styled.div`
     height: 60px;
+    padding: 10px;
     ${mobile({ height: "50px"})};
 `;
 
