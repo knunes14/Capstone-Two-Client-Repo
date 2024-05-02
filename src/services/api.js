@@ -1,5 +1,3 @@
-
-
 async function fetchRecommendations(formData) {
     try {
         const response = await fetch('http://localhost:3000/server/wetsuits/recommend-wetsuits', {
