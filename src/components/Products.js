@@ -19,8 +19,8 @@ const Products = ({cat,filters,sort}) => {
         try {
           const res = await axios.get( 
             cat 
-              ? `http://localhost:3000/server/products?category=${cat}` 
-              : 'http://localhost:3000/server/products'
+              ? `${process.env.REACT_APP_API_BASE_URL}/server/products?category=${cat}` 
+              : `${process.env.REACT_APP_API_BASE_URL}/server/products`
           );
           console.log('Products fetched:', res.data);
           setProducts(res.data);
@@ -48,19 +48,16 @@ useEffect(() => {
   if (sort === "newest") {
     setFilteredProducts(prev => {
       const sorted = [...prev].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-      console.log('Sorted by newest:', sorted);
       return sorted;
     });
   } else if (sort === "asc") {
     setFilteredProducts(prev => {
       const sorted = [...prev].sort((a, b) => a.price - b.price);
-      console.log('Sorted by price ascending:', sorted);
       return sorted;
     });
   } else {
     setFilteredProducts(prev => {
       const sorted = [...prev].sort((a, b) => b.price - a.price);
-      console.log('Sorted by price descending:', sorted);
       return sorted;
     });
   }
